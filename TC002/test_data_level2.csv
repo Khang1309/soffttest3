@@ -1,0 +1,20 @@
+TC_ID,FileName,NumFiles,Timing,ExpectedResult,AssignmentID,FlowType
+TC-002-001,500KB.pdf,1,Before,Submitted for grading,807,normal
+TC-002-002,1KB.txt,1,Before,Submitted for grading,807,normal
+TC-002-003,1023KB.txt,1,Before,Submitted for grading,807,normal
+TC-002-004,1024KB.txt,1,Before,Submitted for grading,807,normal
+TC-002-005,1025KB.txt,1,Before,is too large,807,error_dialog
+TC-002-006,500KB.txt,1,Before,Submitted for grading,807,normal
+TC-002-007,,0,Before,Nothing was submitted,807,empty_submit
+TC-002-009,500KB.txt,1,Before,Submitted for grading,807,normal
+TC-002-011,500KB.pdf,1,After,late,573,late
+TC-002-012,500KB.pdf,1,Before,Submitted for grading,807,normal
+TC-002-013,0KB.pdf,1,Before,is either empty or a folder,807,error_dialog
+TC-002-014,1025KB.pdf,1,Before,is too large,807,error_dialog
+TC-002-015,500KB.txt,1,Before,is not an accepted file type,573,error_dialog
+TC-002-022,1025KB.txt,1,Before,is not an accepted file type,573,error_dialog
+TC-002-025,1024KB.pdf,1,Before,Submitted for grading,807,normal
+TC-002-027,500KB.exe,1,Before,is not an accepted file type,573,error_dialog
+TC-002-031,500KB.pdf,1,Before,Submitted for grading,807,edit
+TC-002-032,,0,Before,No submissions have been made yet,807,remove
+TC-NFT-001,500KB.pdf,1,Before,20,807,performance

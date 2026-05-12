@@ -1,0 +1,10 @@
+[project]
+name = "kr-exported-python-unitest-project1"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "selenium==3.141.0",
+    "urllib3==1.26.7",
+]

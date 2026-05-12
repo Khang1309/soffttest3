@@ -1,0 +1,39 @@
+version = 1
+revision = 3
+requires-python = ">=3.13"
+
+[[package]]
+name = "kr-exported-python-unitest-project1"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "selenium" },
+    { name = "urllib3" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "selenium", specifier = "==3.141.0" },
+    { name = "urllib3", specifier = "==1.26.7" },
+]
+
+[[package]]
+name = "selenium"
+version = "3.141.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "urllib3" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ed/9c/9030520bf6ff0b4c98988448a93c04fcbd5b13cd9520074d8ed53569ccfe/selenium-3.141.0.tar.gz", hash = "sha256:deaf32b60ad91a4611b98d8002757f29e6f2c2d5fcaf202e1c9ad06d6772300d", size = 854669, upload-time = "2018-11-01T09:01:07.6Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/80/d6/4294f0b4bce4de0abf13e17190289f9d0613b0a44e5dd6a7f5ca98459853/selenium-3.141.0-py2.py3-none-any.whl", hash = "sha256:2d7131d7bc5a5b99a2d9b04aaf2612c411b03b8ca1b1ee8d3de5845a9be2cb3c", size = 904577, upload-time = "2018-11-01T09:01:35.607Z" },
+]
+
+[[package]]
+name = "urllib3"
+version = "1.26.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/80/be/3ee43b6c5757cabea19e75b8f46eaf05a2f5144107d7db48c7cf3a864f73/urllib3-1.26.7.tar.gz", hash = "sha256:4987c65554f7a2dbf30c18fd48778ef124af6fab771a377103da0585e2336ece", size = 291350, upload-time = "2021-09-22T18:01:18.331Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/af/f4/524415c0744552cce7d8bf3669af78e8a069514405ea4fcbd0cc44733744/urllib3-1.26.7-py2.py3-none-any.whl", hash = "sha256:c4fdf4019605b6e5423637e01bc9fe4daef873709a7973e195ceba0a62bbc844", size = 138764, upload-time = "2021-09-22T18:01:15.93Z" },
+]

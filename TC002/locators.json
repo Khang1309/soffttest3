@@ -1,0 +1,52 @@
+{
+    "config": {
+        "driver_path": "D:/KR-exported-python-unitest-project1/TC002/msedgedriver.exe",
+        "base_path": "D:\\TC_002",
+        "test_data_csv": "test_data_L2.csv",
+        "wait_timeout": 15,
+        "performance_threshold_seconds": 10
+    },
+
+    "urls": {
+        "login": "https://school.moodledemo.net/login/index.php",
+        "assignment_view": "https://school.moodledemo.net/mod/assign/view.php?id={assignment_id}&action=view",
+        "assignment_edit": "https://school.moodledemo.net/mod/assign/view.php?id={assignment_id}&action=editsubmission"
+    },
+
+    "credentials": {
+        "username": "student",
+        "password": "moodle26"
+    },
+
+    "locators": {
+        "login": {
+            "username_field":       {"by": "ID",    "value": "username"},
+            "password_field":       {"by": "ID",    "value": "password"},
+            "login_button":         {"by": "ID",    "value": "loginbtn"}
+        },
+        "session_check": {
+            "logged_in_indicator":  {"by": "XPATH", "value": "//div[contains(@class,'usermenu')] | //a[contains(@href,'logout')] | //span[contains(@class,'userbutton')]"}
+        },
+        "submission": {
+            "add_submission_btn":   {"by": "XPATH", "value": "//button[contains(text(), 'Add submission')]"},
+            "edit_submission_btn":  {"by": "XPATH", "value": "//button[contains(.,'Edit submission')]"},
+            "remove_submission_btn":{"by": "XPATH", "value": "//button[contains(text(), 'Remove submission')]"},
+            "continue_btn":         {"by": "XPATH", "value": "//button[contains(text(), 'Continue')]"},
+            "save_btn":             {"by": "ID",    "value": "id_submitbutton"},
+            "submission_status_cell":{"by": "XPATH","value": "//th[contains(., 'Submission status')]/following-sibling::td"},
+            "time_remaining_cell":  {"by": "XPATH", "value": "//th[contains(.,'Time remaining')]/following-sibling::td"},
+            "alert_div":            {"by": "XPATH", "value": "//div[contains(@class,'alert')]"}
+        },
+        "file_picker": {
+            "add_file_link":        {"by": "XPATH", "value": "//a[@title='Add...']"},
+            "upload_a_file_link":   {"by": "XPATH", "value": "//a[contains(., 'Upload a file')]"},
+            "file_input":           {"by": "CSS",   "value": "input[type='file']"},
+            "upload_this_file_btn": {"by": "XPATH", "value": "//button[contains(text(), 'Upload this file')]"},
+            "error_dialog":         {"by": "XPATH", "value": "//div[contains(@class,'moodle-dialogue')][contains(.,'{expected}')]"},
+            "fp_filename_field":    {"by": "XPATH", "value": "//div[contains(@class,'fp-filename-field')]"},
+            "fp_filename":          {"by": "XPATH", "value": "//div[contains(@class,'fp-filename')]"},
+            "fp_file_delete_btn":   {"by": "XPATH", "value": "//button[contains(@class,'fp-file-delete')]"},
+            "confirm_yes_btn":      {"by": "XPATH", "value": "//button[normalize-space()='Yes']"}
+        }
+    }
+}
