@@ -1,0 +1,43 @@
+{
+    "config": {
+        "driver_path": "d:/STUDY/HK252/Testing/proj3/softtest3/TC002/msedgedriver.exe",
+        "test_data_csv": "test_data_level2.csv",
+        "wait_timeout": 30,
+        "performance_threshold_seconds": 15
+    },
+
+    "urls": {
+        "login": "https://school.moodledemo.net/login/index.php",
+        "quiz_edit": "https://school.moodledemo.net/mod/quiz/edit.php?cmid={cmid}"
+    },
+
+    "credentials": {
+        "username": "teacher",
+        "password": "moodle26"
+    },
+
+    "locators": {
+        "login": {
+            "username_field":       {"by": "ID",    "value": "username"},
+            "password_field":       {"by": "ID",    "value": "password"},
+            "login_button":         {"by": "ID",    "value": "loginbtn"}
+        },
+        "session_check": {
+            "logged_in_indicator":  {"by": "XPATH", "value": "//div[contains(@class,'usermenu')] | //a[contains(@href,'logout')] | //span[contains(@class,'userbutton')]"}
+        },
+        "quiz": {
+            "add_menu":             {"by": "XPATH", "value": "//span[contains(text(), 'Add')]"},
+            "add_new_question":     {"by": "XPATH", "value": "//span[contains(text(), 'a new question')]"},
+            "true_false_radio":     {"by": "XPATH", "value": "//label[contains(normalize-space(), 'True/False')]//input[@type='radio']"},
+            "add_question_btn":     {"by": "XPATH", "value": "//input[@value='Add' and @type='submit']"},
+            "question_name":        {"by": "ID",    "value": "id_name"},
+            "question_text_iframe": {"by": "XPATH", "value": "//iframe[contains(@class, 'tox-edit-area__iframe')]"},
+            "question_text_body":   {"by": "ID",    "value": "tinymce"},
+            "default_mark":         {"by": "ID",    "value": "id_defaultmark"},
+            "id_number":            {"by": "ID",    "value": "id_idnumber"},
+            "save_btn":             {"by": "ID",    "value": "id_submitbutton"},
+            "question_list":        {"by": "XPATH", "value": "//ul[contains(@class, 'slots')]"},
+            "error_msg":            {"by": "XPATH", "value": "//div[contains(@class, 'invalid-feedback')]"}
+        }
+    }
+}
