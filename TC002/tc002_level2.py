@@ -163,9 +163,6 @@ class T_003(unittest.TestCase):
         self.safe_click(_resolve(sub["save_btn"]))
         self._safe_navigate(assignment_url)
 
-    # ------------------------------------------------------------------ #
-    #  Main test                                                           #
-    # ------------------------------------------------------------------ #
 
     def test_003(self):
         driver = self.driver

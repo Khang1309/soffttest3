@@ -9,6 +9,7 @@ LOGIN_URL      = "https://school.moodledemo.net/login/index.php"
 USERNAME       = "student"
 PASSWORD       = "moodle26"
 BASE_ASSIGN_URL = "https://school.moodledemo.net/mod/assign/view.php"
+BASE_PATH = "D:\\TC_002"
 
 class T_002(unittest.TestCase):
     def setUp(self):
@@ -119,9 +120,7 @@ class T_002(unittest.TestCase):
 
     def test_002(self):
         driver = self.driver
-        basePath = "D:\\TC_002"
-
-        # --- 1. Initial login ---
+        basePath = BASE_PATH
         driver.get(LOGIN_URL)
         driver.find_element(By.ID, "username").send_keys(USERNAME)
         driver.find_element(By.ID, "password").send_keys(PASSWORD)
@@ -131,7 +130,7 @@ class T_002(unittest.TestCase):
         with open('test_data.csv', mode='r', encoding='utf-8-sig') as f:
             for row in csv.reader(f):
                 if row and row[0] == 'TC_ID':
-                    continue            # skip header
+                    continue            
                 if not row or not any(row):
                     break
 
@@ -145,15 +144,11 @@ class T_002(unittest.TestCase):
                 assignment_url = "%s?id=%s&action=view" % (BASE_ASSIGN_URL, assignment_id)
                 edit_url       = "%s?id=%s&action=editsubmission" % (BASE_ASSIGN_URL, assignment_id)
 
-
-                # --- 2. Hard-navigate → kills any open modal/overlay from prev TC ---
                 self._safe_navigate(assignment_url)
                 self._reset_submission(assignment_url)
 
-                # --- 3. Re-authenticate if session was dropped ---
                 try:
                     self._ensure_logged_in()
-                    # After re-login we need to navigate back to the assignment
                     self._safe_navigate(assignment_url)
                     self._reset_submission(assignment_url)
                 except Exception as e:
@@ -163,10 +158,6 @@ class T_002(unittest.TestCase):
                     continue
 
                 try:
-
-                    # --------------------------------------------------------
-                    # FLOW: normal
-                    # --------------------------------------------------------
                     if flow_type == 'normal':
                         self.safe_click((By.XPATH, "//button[contains(text(), 'Add submission')]"))
                         self._open_file_picker_and_upload(basePath, file_name)
@@ -182,21 +173,11 @@ class T_002(unittest.TestCase):
                         self.safe_click((By.XPATH, "//button[contains(text(), 'Remove submission')]"))
                         self.safe_click((By.XPATH, "//button[contains(text(), 'Continue')]"))
 
-                    # --------------------------------------------------------
-                    # FLOW: error_dialog
-                    # The error modal appears inside the file picker after
-                    # "Upload this file" is clicked. We verify the dialog text,
-                    # then use _safe_navigate (disables beforeunload) to leave —
-                    # no need to click × at all. This avoids the 15-second timeout
-                    # that clicking an ambiguous close-button XPath would cause.
-                    # --------------------------------------------------------
                     elif flow_type == 'error_dialog':
                         self.safe_click((By.XPATH, "//button[contains(text(), 'Add submission')]"))
                         self._open_file_picker_and_upload(basePath, file_name)
                         time.sleep(2)   # let the error dialog render
 
-                        # Verify: dialog container must contain the expected substring
-                        # (matches Katalon's assertTrue + is_element_present pattern)
                         dialog_xpath = ("//div[contains(@class,'moodle-dialogue')]"
                                         "[contains(.,'%s')]" % expected)
                         try:
@@ -204,12 +185,8 @@ class T_002(unittest.TestCase):
                         except AssertionError as e:
                             self.verificationErrors.append("Test %s Failed: %s" % (tc_id, str(e)))
 
-                        # Kill beforeunload then navigate — this destroys every overlay
                         self._safe_navigate(assignment_url)
 
-                    # --------------------------------------------------------
-                    # FLOW: empty_submit
-                    # --------------------------------------------------------
                     elif flow_type == 'empty_submit':
                         self.safe_click((By.XPATH, "//button[contains(text(), 'Add submission')]"))
                         self.safe_click((By.ID, "id_submitbutton"))
@@ -222,10 +199,6 @@ class T_002(unittest.TestCase):
                                              r"^[\s\S]*%s[\s\S]*$" % re.escape(expected))
                         except AssertionError as e:
                             self.verificationErrors.append("Test %s Failed: %s" % (tc_id, str(e)))
-
-                    # --------------------------------------------------------
-                    # FLOW: late  (id=573, past-deadline assignment)
-                    # --------------------------------------------------------
                     elif flow_type == 'late':
                         self.safe_click((By.XPATH, "//button[contains(text(), 'Add submission')]"))
                         self._open_file_picker_and_upload(basePath, file_name)
@@ -246,9 +219,6 @@ class T_002(unittest.TestCase):
                         except Exception:
                             pass
 
-                    # --------------------------------------------------------
-                    # FLOW: edit  (TC-002-031)
-                    # --------------------------------------------------------
                     elif flow_type == 'edit':
                         if driver.find_elements(By.XPATH,
                                 "//button[contains(text(), 'Add submission')]"):
@@ -285,9 +255,7 @@ class T_002(unittest.TestCase):
                         self.safe_click((By.XPATH, "//button[contains(text(), 'Remove submission')]"))
                         self.safe_click((By.XPATH, "//button[contains(text(), 'Continue')]"))
 
-                    # --------------------------------------------------------
-                    # FLOW: remove  (TC-002-032)
-                    # --------------------------------------------------------
+
                     elif flow_type == 'remove':
                         if driver.find_elements(By.XPATH,
                                 "//button[contains(text(), 'Add submission')]"):
@@ -309,7 +277,7 @@ class T_002(unittest.TestCase):
                     else:
                         print("  [SKIP] Unknown flow_type '%s'" % flow_type)
 
-                    # per-TC result line
+       
                     tc_errors = [e for e in self.verificationErrors if tc_id in e]
                     print("  [%s] %s" % ("FAIL" if tc_errors else "PASS", tc_id))
 
@@ -317,7 +285,7 @@ class T_002(unittest.TestCase):
                     err = "Test %s ERROR: %s: %s" % (tc_id, type(e).__name__, str(e))
                     self.verificationErrors.append(err)
                     print("  [ERROR] %s" % err)
-                    self._safe_navigate(assignment_url)   # recover for next TC
+                    self._safe_navigate(assignment_url)  
 
 
     def tearDown(self):
