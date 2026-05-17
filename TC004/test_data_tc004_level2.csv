@@ -1,0 +1,5 @@
+TC_ID,QuizName,TimeLimit,Grade,ExpectedResult,FlowType
+TC-004-001,,60,5,You must supply a value here.,error_msg
+TC-004-004,Quiz Test,-1,5,This duration cannot be negative.,error_msg
+TC-004-006,Quiz Test,60,5,Success,success
+TC-NFT-001,Quiz NFT,60,5,5.0,performance

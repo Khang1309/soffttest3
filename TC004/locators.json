@@ -1,0 +1,16 @@
+{
+  "login_url": "https://school.moodledemo.net/login/index.php",
+  "input_username": "username",
+  "input_quiz_name": "id_name",
+  "btn_save": "id_submitbutton",
+  "add_quiz": {
+            "quiz_name":            {"by": "ID",    "value": "id_name"},
+            "section_timing":       {"by": "XPATH", "value": "//a[contains(text(), 'Timing')]"},
+            "enable_time_cb":       {"by": "ID",    "value": "id_timelimit_enabled"},
+            "time_limit_input":     {"by": "ID",    "value": "id_timelimit_number"},
+            "section_grade":        {"by": "XPATH", "value": "//a[contains(text(), 'Grade')]"},
+            "grade_pass_input":     {"by": "ID",    "value": "id_gradepass"},
+            "save_btn":             {"by": "ID",    "value": "id_submitbutton"},
+            "error_message":        {"by": "CSS",   "value": "div.invalid-feedback, span.error"}
+        }
+}
