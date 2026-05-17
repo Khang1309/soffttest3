@@ -127,7 +127,7 @@ class T_002(unittest.TestCase):
         self.safe_click((By.ID, "loginbtn"))
         time.sleep(2)
 
-        with open('test_data.csv', mode='r', encoding='utf-8-sig') as f:
+        with open('test_data_level1.csv', mode='r', encoding='utf-8-sig') as f:
             for row in csv.reader(f):
                 if row and row[0] == 'TC_ID':
                     continue            

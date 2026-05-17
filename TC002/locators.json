@@ -2,7 +2,7 @@
     "config": {
         "driver_path": "D:/KR-exported-python-unitest-project1/TC002/msedgedriver.exe",
         "base_path": "D:\\TC_002",
-        "test_data_csv": "test_data_L2.csv",
+        "test_data_csv": "test_data_level2.csv",
         "wait_timeout": 15,
         "performance_threshold_seconds": 10
     },
