@@ -1,0 +1,9 @@
+element_name,locator_type,locator_value
+username_field,id,username
+password_field,id,password
+login_btn,id,loginbtn
+attempt_btn,xpath,//button[contains(text(),'Attempt quiz')]
+quiz_pass_field,id,id_quizpassword
+submit_btn,id,id_submitbutton
+body_text,tag_name,body
+continue_logout_btn,xpath,//button[contains(text(),'Continue')]
